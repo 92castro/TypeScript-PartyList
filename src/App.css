@@ -51,7 +51,7 @@ body {
   align-items: center;
 }
 
-.todoList {
+.dishList {
   flex: 70%;
   width: 100%;
   display: flex;
@@ -60,7 +60,7 @@ body {
   flex-direction: column;
 }
 
-.task {
+.dish {
   width: 500px;
   height: 50px;
   display: flex;
@@ -68,7 +68,7 @@ body {
   margin: 15px;
 }
 
-.task .content {
+.dish .content {
   flex: 80%;
   height: 100%;
   display: flex;
@@ -76,7 +76,7 @@ body {
   align-items: center;
 }
 
-.task .content span {
+.dish .content span {
   display: grid;
   place-items: center;
   border: 1px solid white;
@@ -87,7 +87,7 @@ body {
   background-color: rgb(151, 197, 197);
 }
 
-.task button {
+.dish button {
   flex: 20%;
   height: 100%;
   border: none;

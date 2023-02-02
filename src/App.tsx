@@ -1,32 +1,32 @@
 import React, {FC, ChangeEvent, useState} from 'react';
 import './App.css';
-import TodoTask from './Components/TodoTask';
-import {ITask} from "./Interfaces"
+import CreateDish from './Components/CreateDish';
+import {IDish} from "./Interfaces"
 
 const App: FC = () => {
   
-  const [task, setTask] = useState<string>("")
-  const [deadline, setDeadline] = useState<number>(0)
-  const [todoList, setTodoList] = useState<ITask[]>([])
+  const [dish, setDish] = useState<string>("")
+  const [guest, setGuest] = useState<string>("")
+  const [dishList, setDishList] = useState<IDish[]>([])
 
   const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
-    if (e.target.name === "task"){
-      setTask(e.target.value)
+    if (e.target.name === "dish"){
+      setDish(e.target.value)
     }else{
-      setDeadline(Number(e.target.value))
+      setGuest(e.target.value)
     }
   }
 
-  const addTask = (): void => {
-    const newTask = {taskName: task, deadline:deadline};
-    setTodoList([...todoList, newTask])
-    setTask("");
-    setDeadline(0);
+  const addDish = (): void => {
+    const newDish = {dishName: dish, guest:guest};
+    setDishList([...dishList, newDish])
+    setDish("");
+    setGuest("");
   }
 
-  const completeTask = (taskNameToDelete:string): void=>{
-    setTodoList(todoList.filter((task)=> {
-    return task.taskName != taskNameToDelete
+  const removeDish = (dishNameToDelete:string): void=>{
+    setDishList(dishList.filter((dish)=> {
+    return dish.dishName != dishNameToDelete
   }))
   }
   
@@ -35,14 +35,14 @@ const App: FC = () => {
     <h1>SuperBowl Party</h1>
       <div className='header'>
         <div className='inputContainer'>
-        <input type="text" placeholder='Task...' name='task' value={task} onChange={handleChange} />
-        <input type="number" placeholder='Deadline (in Days)...' onChange={handleChange} name='deadline' value={deadline} />
+        <input type="text" placeholder='Dish...' name='dish' value={dish} onChange={handleChange} />
+        <input type="text" placeholder='Guest Name' onChange={handleChange} name='guest' value={guest} />
         </div>
-        <button onClick={addTask}>Add Task</button>
+        <button onClick={addDish}>Add Dish</button>
       </div>
-      <div className='todoList'>
-        {todoList.map((task: ITask, key:number)=> {
-        return <TodoTask key={key} task={task} completeTask={completeTask}/>;
+      <div className='dishList'>
+        {dishList.map((dish: IDish, key:number)=> {
+        return <CreateDish key={key} dish={dish} removeDish={removeDish}/>;
 })}
       </div>
     </div>

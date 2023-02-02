@@ -1,4 +1,4 @@
-export interface ITask{
-    taskName: string;
-    deadline: number;
+export interface IDish{
+    dishName: string;
+    guest: string;
 }
